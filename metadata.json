@@ -1,0 +1,5 @@
+{
+  "name": "GitArt: Interactive Commit Painter",
+  "description": "A dynamic contribution graph editor that allows you to design and preview commit patterns, with AI-powered pattern generation and script export functionality.",
+  "requestFramePermissions": []
+}
