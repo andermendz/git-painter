@@ -119,20 +119,22 @@ const Grid: React.FC<GridProps> = ({ gridState, onCellClick, onCellHover, year, 
   if (!hasAnyVisibleCells) return null;
 
   return (
-    <div className="flex flex-col gap-2 w-full select-none mb-8 last:mb-0">
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white px-1 tracking-tight">{year}</h3>
+    <div className="flex flex-col gap-1.5 w-full select-none">
+      <div className="flex items-center justify-between px-1">
+        <h3 className="text-[11px] font-black uppercase text-gray-400 tracking-wider">{year}</h3>
+      </div>
       
-      <div className="bg-white dark:bg-[#0d1117] p-5 rounded-xl border border-gray-200 dark:border-[#30363d] shadow-sm w-fit mx-auto max-w-full">
+      <div className="bg-white dark:bg-[#0d1117] p-3 rounded-lg border border-gray-200 dark:border-[#30363d] w-fit mx-auto max-w-full">
         {/* Scrollable Grid Area */}
-        <div className="overflow-x-auto custom-scrollbar pb-2">
+        <div className="overflow-x-auto custom-scrollbar">
           <div className="min-w-max">
              {/* Month Labels Row */}
-             <div className="flex mb-2 gap-[3px] h-[14px]">
+             <div className="flex mb-1.5 gap-[3px] h-3">
                 {weeks.map(w => (
-                  <div key={w} className="w-[11px] text-[10px] text-gray-500 dark:text-gray-400 font-medium relative h-full">
+                  <div key={w} className="w-[11px] text-[9px] text-gray-400 dark:text-gray-500 font-bold relative h-full">
                      {(() => {
                        const label = getMonthLabel(w);
-                       return label ? <span className="absolute left-0 bottom-0 whitespace-nowrap">{label}</span> : null;
+                       return label ? <span className="absolute left-0 bottom-0 whitespace-nowrap uppercase tracking-tighter">{label.substring(0, 3)}</span> : null;
                      })()}
                   </div>
                 ))}

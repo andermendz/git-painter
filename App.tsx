@@ -99,7 +99,7 @@ const App: React.FC = () => {
   };
 
   const handleClear = () => {
-    if (confirm("Are you sure you want to clear all planned commits?")) {
+    if (confirm("Are you sure you want to clear all commits?")) {
       setGridState({});
     }
   };
@@ -189,8 +189,8 @@ const App: React.FC = () => {
   const generateNodeScript = () => {
     const commits = getCommitsData;
     return `/**
- * GitArt Contribution Script (Node.js)
- * Generated from GitArt Painter
+ * Git Painter Contribution Script (Node.js)
+ * Generated from Git Painter
  */
 const moment = require("moment");
 const simpleGit = require("simple-git");
@@ -201,7 +201,7 @@ const commits = ${JSON.stringify(commits, null, 2)};
 
 async function run() {
   const git = simpleGit();
-  console.log("🚀 Starting GitArt generation...");
+  console.log("🚀 Starting Git Painter generation...");
   
   if (!fs.existsSync(path)) {
     fs.writeFileSync(path, JSON.stringify({}));
@@ -217,7 +217,7 @@ async function run() {
       await git.commit(date, { "--date": date });
     }
   }
-  console.log("✨ GitArt completed! Remember to push your changes.");
+  console.log("✨ Git Painter completed! Remember to push your changes.");
 }
 
 run().catch(err => {
@@ -228,11 +228,11 @@ run().catch(err => {
   const generateBashScript = () => {
     const commits = getCommitsData;
     let script = `#!/bin/bash
-# GitArt Contribution Script (Bash)
-# Generated from GitArt Painter
+# Git Painter Contribution Script (Bash)
+# Generated from Git Painter
 
 FILE="./data.json"
-echo "🚀 Starting GitArt generation..."
+echo "🚀 Starting Git Painter generation..."
 
 if [ ! -f "$FILE" ]; then
     echo "{}" > "$FILE"
@@ -249,17 +249,17 @@ fi
       }
       script += `\n`;
     });
-    script += `echo "✨ GitArt completed! Remember to push your changes."\n`;
+    script += `echo "✨ Git Painter completed! Remember to push your changes."\n`;
     return script;
   };
 
   const generatePowerShellScript = () => {
     const commits = getCommitsData;
-    let script = `# GitArt Contribution Script (PowerShell)
-# Generated from GitArt Painter
+    let script = `# Git Painter Contribution Script (PowerShell)
+# Generated from Git Painter
 
 $file = "./data.json"
-Write-Host "🚀 Starting GitArt generation..." -ForegroundColor Green
+Write-Host "🚀 Starting Git Painter generation..." -ForegroundColor Green
 
 if (-not (Test-Path $file)) {
     "{}" | Out-File -FilePath $file -Encoding utf8
@@ -276,7 +276,7 @@ if (-not (Test-Path $file)) {
       }
       script += `\n`;
     });
-    script += `Write-Host "✨ GitArt completed! Remember to push your changes." -ForegroundColor Cyan\n`;
+    script += `Write-Host "✨ Git Painter completed! Remember to push your changes." -ForegroundColor Cyan\n`;
     return script;
   };
 
@@ -315,177 +315,165 @@ if (-not (Test-Path $file)) {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8 flex flex-col gap-8 max-w-7xl mx-auto transition-colors duration-300">
-      {/* ... header and grids ... */}
-      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-3">
-            <svg className="w-10 h-10 text-[#39d353]" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-            GitArt Painter
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-2 text-lg">Design your contribution history with precision across multiple years.</p>
+    <div className="min-h-screen bg-white dark:bg-[#0d1117] text-gray-900 dark:text-gray-100 transition-colors duration-300 flex flex-col p-4 md:p-8">
+      <header className="max-w-7xl w-full mx-auto mb-8 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <svg className="w-8 h-8 text-[#39d353]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          <h1 className="text-xl font-black uppercase tracking-widest">Git Painter</h1>
         </div>
         
-        <div className="flex flex-col items-end gap-3">
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-[#161b22] rounded-lg border border-gray-200 dark:border-[#30363d]">
+            <span className="text-[10px] font-black uppercase text-gray-400 tracking-wider">Total Commits</span>
+            <span className="font-mono text-[#39d353] font-bold">{totalCommits.toLocaleString()}</span>
+          </div>
+
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-[#30363d] border border-gray-200 dark:border-[#484f58] text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#484f58] transition-all flex items-center gap-2 text-sm font-medium shadow-sm"
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-[#161b22] transition-colors"
             title="Toggle Theme"
           >
             {theme === 'light' ? (
-              <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                <span>Dark Mode</span>
-              </>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
             ) : (
-              <>
-                <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-                <span>Light Mode</span>
-              </>
+              <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
             )}
           </button>
-          <div className="text-right">
-            <div className="text-xs text-gray-500 uppercase font-black tracking-widest mb-1">Planned Commits</div>
-            <div className="text-4xl font-mono text-[#39d353] font-bold drop-shadow-[0_0_8px_rgba(57,211,83,0.3)]">{totalCommits.toLocaleString()}</div>
-          </div>
         </div>
       </header>
 
-      <div className="space-y-6">
-        {yearsToRender.map(year => (
-          <Grid 
-            key={year}
-            year={year}
-            gridState={gridState} 
-            onCellClick={handleCellClick} 
-            onCellHover={handleCellHover}
-            globalStartDate={normalizedStartDate}
-            globalEndDate={normalizedEndDate}
+      <main className="flex-1 max-w-7xl w-full mx-auto flex flex-col gap-12">
+        {/* 1. Contribution Grids */}
+        <div className="w-full space-y-12">
+          {yearsToRender.map(year => (
+            <Grid 
+              key={year}
+              year={year}
+              gridState={gridState} 
+              onCellClick={handleCellClick} 
+              onCellHover={handleCellHover}
+              globalStartDate={normalizedStartDate}
+              globalEndDate={normalizedEndDate}
+            />
+          ))}
+        </div>
+
+        {/* 2. Options (Toolbar) */}
+        <div className="w-fit mx-auto">
+          <Toolbar 
+            currentLevel={currentLevel}
+            setCurrentLevel={setCurrentLevel}
+            onClear={handleClear}
+            onRandomize={handleRandomize}
+            isRandomizing={isRandomizing}
+            randomizeCount={randomizeCount}
+            setRandomizeCount={setRandomizeCount}
+            startDate={startDateStr}
+            endDate={endDateStr}
+            onStartDateChange={setStartDateStr}
+            onEndDateChange={setEndDateStr}
+            onApplyPreset={handleApplyPreset}
           />
-        ))}
-      </div>
-
-      <Toolbar 
-        currentLevel={currentLevel}
-        setCurrentLevel={setCurrentLevel}
-        onClear={handleClear}
-        onRandomize={handleRandomize}
-        isRandomizing={isRandomizing}
-        randomizeCount={randomizeCount}
-        setRandomizeCount={setRandomizeCount}
-        startDate={startDateStr}
-        endDate={endDateStr}
-        onStartDateChange={setStartDateStr}
-        onEndDateChange={setEndDateStr}
-        onApplyPreset={handleApplyPreset}
-      />
-
-      <section className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-gray-50 dark:bg-[#161b22] p-8 rounded-xl border border-gray-200 dark:border-[#30363d] shadow-sm">
-          <h2 className="text-xl font-bold mb-5 text-gray-900 dark:text-white flex items-center gap-2">
-            <svg className="w-5 h-5 text-[#39d353]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            Quick Guide
-          </h2>
-          <ul className="space-y-4 text-gray-600 dark:text-gray-400">
-            <li className="flex gap-4">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-200 dark:bg-[#30363d] text-gray-700 dark:text-white flex items-center justify-center text-xs font-bold">1</span>
-              <div>
-                <p className="text-gray-900 dark:text-white font-medium">Select Range</p>
-                <p className="text-sm">Pick your start and end dates. Only these days will be painted.</p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-200 dark:bg-[#30363d] text-gray-700 dark:text-white flex items-center justify-center text-xs font-bold">2</span>
-              <div>
-                <p className="text-gray-900 dark:text-white font-medium">Draw Pattern</p>
-                <p className="text-sm">Click or drag across the grids. Higher intensity = more commits per day.</p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-200 dark:bg-[#30363d] text-gray-700 dark:text-white flex items-center justify-center text-xs font-bold">3</span>
-              <div>
-                <p className="text-gray-900 dark:text-white font-medium">Preview & Run</p>
-                <p className="text-sm">Preview the script for your platform (Node.js, Bash, or PowerShell) and run it.</p>
-              </div>
-            </li>
-          </ul>
         </div>
 
-        <div className="bg-gray-50 dark:bg-[#161b22] p-8 rounded-xl border border-gray-200 dark:border-[#30363d] flex flex-col justify-center items-center text-center shadow-sm">
-          <div className="w-16 h-16 bg-[#238636]/10 dark:bg-[#238636]/20 rounded-full flex items-center justify-center mb-6">
-            <svg className="w-8 h-8 text-[#39d353]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        {/* 3. Guide & Tips Side by Side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12">
+          <div className="bg-gray-50 dark:bg-[#161b22] p-6 rounded-xl border border-gray-200 dark:border-[#30363d]">
+            <h2 className="text-[10px] font-black mb-6 text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+              Quick Guide
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">1. Range</p>
+                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Pick dates in the toolbar. Only active dates can be painted.</p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">2. Paint</p>
+                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Click or drag on the grid. Intensity levels define frequency.</p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">3. Export</p>
+                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Get your custom script (Node, Bash, or PS) to run.</p>
+              </div>
+            </div>
           </div>
-          <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Export Your Design</h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-8 max-w-sm leading-relaxed">
-            Ready to transform your profile? Preview and download the automation script for your preferred platform.
-          </p>
-          <button
-            onClick={() => setShowPreview(true)}
-            disabled={totalCommits === 0}
-            className="w-full flex items-center justify-center gap-3 bg-gray-900 dark:bg-white hover:bg-black dark:hover:bg-gray-100 text-white dark:text-[#0d1117] py-4 rounded-xl font-black text-lg transition-all active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed shadow-lg"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-            Preview Script
-          </button>
+
+          <div className="bg-gray-50 dark:bg-[#161b22] p-6 rounded-xl border border-gray-200 dark:border-[#30363d] flex flex-col justify-center gap-4">
+            <div className="space-y-1">
+              <h2 className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                Finish & Run
+              </h2>
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                Ready to transform your profile? Generate your custom automation script and follow the instructions to apply your new contribution pattern.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowPreview(true)}
+              disabled={totalCommits === 0}
+              className="w-full py-4 bg-[#238636] hover:bg-[#2ea043] text-white rounded-xl shadow-sm transition-all disabled:opacity-30 disabled:grayscale flex items-center justify-center gap-3 active:scale-[0.98] group mt-2"
+            >
+              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span className="text-xs font-black uppercase tracking-widest">Export Design</span>
+            </button>
+          </div>
         </div>
-      </section>
+      </main>
 
       {/* Script Preview Modal */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#161b22] w-full max-w-4xl rounded-2xl shadow-2xl border border-gray-200 dark:border-[#30363d] flex flex-col max-h-[90vh]">
-            <div className="p-6 border-b border-gray-200 dark:border-[#30363d] flex items-center justify-between">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#39d353]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Script Preview
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-[2px] animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-[#0d1117] w-full max-w-3xl rounded-xl shadow-2xl border border-gray-200 dark:border-[#30363d] flex flex-col max-h-[85vh] overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 dark:border-[#30363d] flex items-center justify-between">
+              <h3 className="text-sm font-black uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                Export Script
               </h3>
-              <button onClick={() => setShowPreview(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg>
+              <button onClick={() => setShowPreview(false)} className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-[#161b22] text-gray-400 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg>
               </button>
             </div>
             
-            <div className="flex bg-gray-50 dark:bg-[#0d1117] p-1 gap-1 border-b border-gray-200 dark:border-[#30363d]">
+            <div className="flex bg-gray-50 dark:bg-[#161b22] p-1 gap-1 border-b border-gray-200 dark:border-[#30363d]">
               {(['nodejs', 'bash', 'powershell'] as const).map(tab => (
                 <button
                   key={tab}
                   onClick={() => setPreviewTab(tab)}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
+                  className={`flex-1 py-2 text-[10px] font-black uppercase tracking-wider rounded-md transition-all ${
                     previewTab === tab 
-                      ? 'bg-white dark:bg-[#30363d] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-[#484f58]' 
+                      ? 'bg-white dark:bg-[#0d1117] text-[#39d353] shadow-sm border border-gray-200 dark:border-[#30363d]' 
                       : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                   }`}
                 >
-                  {tab === 'nodejs' ? 'Node.js' : tab === 'bash' ? 'Bash (Linux/Mac)' : 'PowerShell (Windows)'}
+                  {tab === 'nodejs' ? 'Node.js' : tab === 'bash' ? 'Bash' : 'PowerShell'}
                 </button>
               ))}
             </div>
 
-            <div className="flex-1 overflow-auto p-6 bg-gray-50 dark:bg-[#0d1117] relative group">
-              <pre className="text-xs font-mono text-gray-800 dark:text-gray-300 leading-relaxed whitespace-pre">
+            <div className="flex-1 overflow-auto p-0 bg-[#f6f8fa] dark:bg-[#0d1117] relative group">
+              <pre className="p-6 text-[11px] font-mono text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre">
                 {getPreviewContent()}
               </pre>
               <button 
                 onClick={copyToClipboard}
-                className="absolute top-4 right-4 p-2 bg-gray-200 dark:bg-[#30363d] rounded-lg text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-300 dark:hover:bg-[#484f58]"
-                title="Copy to clipboard"
+                className="absolute top-4 right-4 px-3 py-1.5 bg-white dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-[10px] font-bold text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-all hover:border-[#39d353] hover:text-[#39d353]"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-1 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 13c-.77 1.333.192 3 1.732 3z"/></svg>
+                Copy
               </button>
             </div>
 
-            <div className="p-6 border-t border-gray-200 dark:border-[#30363d] flex gap-4">
+            <div className="px-6 py-4 border-t border-gray-200 dark:border-[#30363d] flex gap-3">
               <button
                 onClick={handleDownload}
-                className="flex-1 flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-[#0d1117] py-3 rounded-xl font-bold transition-all hover:opacity-90 active:scale-[0.98]"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#238636] hover:bg-[#2ea043] text-white py-2.5 rounded-lg text-xs font-bold transition-all"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 Download .{previewTab === 'nodejs' ? 'js' : previewTab === 'bash' ? 'sh' : 'ps1'}
               </button>
               <button
                 onClick={() => setShowPreview(false)}
-                className="px-6 py-3 border border-gray-200 dark:border-[#30363d] rounded-xl font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-[#30363d] transition-all"
+                className="px-6 py-2.5 border border-gray-200 dark:border-[#30363d] rounded-lg text-xs font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-[#161b22] transition-all"
               >
                 Close
               </button>
@@ -494,7 +482,7 @@ if (-not (Test-Path $file)) {
         </div>
       )}
 
-      <footer className="mt-auto py-12 text-center text-gray-500 dark:text-gray-600 text-xs border-t border-gray-200 dark:border-[#30363d] flex flex-col gap-2">
+      <footer className="mt-auto py-12 text-center text-gray-400 dark:text-gray-600 text-[10px] flex flex-col gap-2 uppercase tracking-widest font-bold">
         <p>Built for developers. Inspired by the GitHub Contribution Graph.</p>
         <p className="opacity-50 italic">Note: Only intended for artistic use on private or dedicated repositories.</p>
       </footer>
