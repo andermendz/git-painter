@@ -10,11 +10,11 @@ export const LEVEL_COLORS: Record<CommitLevel, string> = {
 };
 
 export const LEVEL_HOVER_COLORS: Record<CommitLevel, string> = {
-  0: 'hover:opacity-80',
-  1: 'hover:opacity-80',
-  2: 'hover:opacity-80',
-  3: 'hover:opacity-80',
-  4: 'hover:opacity-80',
+  0: 'hover:outline-blue-500',
+  1: 'hover:outline-blue-500',
+  2: 'hover:outline-blue-500',
+  3: 'hover:outline-blue-500',
+  4: 'hover:outline-blue-500',
 };
 
 export const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

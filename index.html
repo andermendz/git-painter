@@ -56,18 +56,20 @@
       }
       
       .custom-scrollbar::-webkit-scrollbar {
-        height: 6px;
-        width: 6px;
+        height: 8px;
+        width: 8px;
       }
       .custom-scrollbar::-webkit-scrollbar-track {
         background: var(--scrollbar-track);
+        border-radius: 10px;
       }
       .custom-scrollbar::-webkit-scrollbar-thumb {
         background: var(--scrollbar-thumb);
         border-radius: 10px;
+        border: 2px solid var(--scrollbar-track);
       }
       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #484f58;
+        background: #8b949e;
       }
 
       /* Fix calendar icons visibility in dark mode */

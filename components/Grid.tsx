@@ -95,11 +95,11 @@ const Grid: React.FC<GridProps> = ({ gridState, onCellClick, onCellHover, year, 
               if (!isActive) return;
               onCellHover(dateKey, isMouseDown);
             }}
-            className={`w-[11px] h-[11px] rounded-[2px] transition-all duration-200 ease-out box-border
+            className={`w-[10px] h-[10px] rounded-[2px] transition-all duration-150 ease-out box-border
               ${isActive 
-                ? `${LEVEL_COLORS[level]} ${LEVEL_HOVER_COLORS[level]} cursor-pointer border ${level === 0 ? 'border-gray-200 dark:border-[#30363d]' : 'border-transparent'}` 
+                ? `${LEVEL_COLORS[level]} cursor-pointer hover:ring-1 hover:ring-blue-500 hover:ring-offset-1 dark:hover:ring-offset-[#0d1117] z-10 ${level === 0 ? 'outline outline-1 outline-[#1b1f230f] dark:outline-[#ffffff0d]' : ''}` 
                 : isVisibleInYear
-                  ? `bg-gray-100 dark:bg-[#161b22] opacity-30 border border-gray-200 dark:border-[#30363d] cursor-not-allowed`
+                  ? `bg-gray-100 dark:bg-[#161b22] opacity-20 cursor-not-allowed`
                   : 'bg-transparent border-none pointer-events-none opacity-0'
               }
             `}
@@ -109,7 +109,7 @@ const Grid: React.FC<GridProps> = ({ gridState, onCellClick, onCellHover, year, 
       }
 
       return (
-        <div key={w} className="flex flex-col gap-[3px] w-[11px]">
+        <div key={w} className="flex flex-col gap-[2px] w-[10px]">
           {days}
         </div>
       );
@@ -124,26 +124,39 @@ const Grid: React.FC<GridProps> = ({ gridState, onCellClick, onCellHover, year, 
         <h3 className="text-[11px] font-black uppercase text-gray-400 tracking-wider">{year}</h3>
       </div>
       
-      <div className="bg-white dark:bg-[#0d1117] p-3 rounded-lg border border-gray-200 dark:border-[#30363d] w-fit mx-auto max-w-full">
-        {/* Scrollable Grid Area */}
-        <div className="overflow-x-auto custom-scrollbar">
-          <div className="min-w-max">
-             {/* Month Labels Row */}
-             <div className="flex mb-1.5 gap-[3px] h-3">
-                {weeks.map(w => (
-                  <div key={w} className="w-[11px] text-[9px] text-gray-400 dark:text-gray-500 font-bold relative h-full">
-                     {(() => {
-                       const label = getMonthLabel(w);
-                       return label ? <span className="absolute left-0 bottom-0 whitespace-nowrap uppercase tracking-tighter">{label.substring(0, 3)}</span> : null;
-                     })()}
-                  </div>
-                ))}
-             </div>
+      <div className="bg-white dark:bg-[#0d1117] p-4 rounded-lg border border-gray-200 dark:border-[#30363d] w-fit mx-auto max-w-full">
+        <div className="flex gap-2">
+          {/* Day Labels */}
+          <div className="flex flex-col gap-[2px] pt-[18px] text-[9px] text-gray-400 dark:text-gray-500 font-medium">
+            <div className="h-[10px] flex items-center"></div>
+            <div className="h-[10px] flex items-center">Mon</div>
+            <div className="h-[10px] flex items-center"></div>
+            <div className="h-[10px] flex items-center">Wed</div>
+            <div className="h-[10px] flex items-center"></div>
+            <div className="h-[10px] flex items-center">Fri</div>
+            <div className="h-[10px] flex items-center"></div>
+          </div>
 
-             {/* Cells Grid */}
-             <div className="flex gap-[3px]">
-                {renderCells()}
-             </div>
+          {/* Scrollable Grid Area */}
+          <div className="overflow-x-auto custom-scrollbar pb-3">
+            <div className="min-w-max">
+               {/* Month Labels Row */}
+               <div className="flex mb-1.5 gap-[2px] h-3">
+                  {weeks.map(w => (
+                    <div key={w} className="w-[10px] text-[9px] text-gray-400 dark:text-gray-500 font-bold relative h-full">
+                       {(() => {
+                         const label = getMonthLabel(w);
+                         return label ? <span className="absolute left-0 bottom-0 whitespace-nowrap uppercase tracking-tighter">{label.substring(0, 3)}</span> : null;
+                       })()}
+                    </div>
+                  ))}
+               </div>
+
+               {/* Cells Grid */}
+               <div className="flex gap-[2px]">
+                  {renderCells()}
+               </div>
+            </div>
           </div>
         </div>
       </div>

@@ -382,20 +382,37 @@ if (-not (Test-Path $file)) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12">
           <div className="bg-gray-50 dark:bg-[#161b22] p-6 rounded-xl border border-gray-200 dark:border-[#30363d]">
             <h2 className="text-[10px] font-black mb-6 text-gray-400 dark:text-gray-500 uppercase tracking-widest">
-              Quick Guide
+              How to Use Git Painter
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">1. Range</p>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Pick dates in the toolbar. Only active dates can be painted.</p>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] text-gray-900 dark:text-white flex items-center justify-center text-[10px] font-black">1</span>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">Prepare Your Repository</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Open your terminal and navigate to a dedicated repository (e.g., <code className="bg-gray-200 dark:bg-[#30363d] px-1 rounded text-gray-900 dark:text-[#39d353]">cd ~/Repos/test-paint</code>).
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">2. Paint</p>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Click or drag on the grid. Intensity levels define frequency.</p>
+
+              <div className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] text-gray-900 dark:text-white flex items-center justify-center text-[10px] font-black">2</span>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">Design & Export</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Paint your pattern above, then click <strong>Export Design</strong>. Choose your platform (Bash for Linux/Mac, PowerShell for Windows) and copy the script.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-tight">3. Export</p>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Get your custom script (Node, Bash, or PS) to run.</p>
+
+              <div className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] text-gray-900 dark:text-white flex items-center justify-center text-[10px] font-black">3</span>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">Run & Push</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Paste the script into your terminal and press enter. Once it finishes, run <code className="bg-gray-200 dark:bg-[#30363d] px-1 rounded text-gray-900 dark:text-[#39d353]">git push origin main</code> to see the results on GitHub!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -452,23 +469,25 @@ if (-not (Test-Path $file)) {
               ))}
             </div>
 
-            <div className="flex-1 overflow-auto p-0 bg-[#f6f8fa] dark:bg-[#0d1117] relative group">
+            <div className="flex-1 overflow-auto p-0 bg-[#f6f8fa] dark:bg-[#0d1117] relative group custom-scrollbar">
               <pre className="p-6 text-[11px] font-mono text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre">
                 {getPreviewContent()}
               </pre>
-              <button 
-                onClick={copyToClipboard}
-                className="absolute top-4 right-4 px-3 py-1.5 bg-white dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-[10px] font-bold text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-all hover:border-[#39d353] hover:text-[#39d353]"
-              >
-                Copy
-              </button>
             </div>
 
             <div className="px-6 py-4 border-t border-gray-200 dark:border-[#30363d] flex gap-3">
               <button
+                onClick={copyToClipboard}
+                className="flex-1 flex items-center justify-center gap-2 bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] text-gray-700 dark:text-gray-300 py-2.5 rounded-lg text-xs font-bold transition-all hover:bg-gray-200 dark:hover:bg-[#30363d]"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-1 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 13c-.77 1.333.192 3 1.732 3z"/></svg>
+                Copy to Clipboard
+              </button>
+              <button
                 onClick={handleDownload}
                 className="flex-1 flex items-center justify-center gap-2 bg-[#238636] hover:bg-[#2ea043] text-white py-2.5 rounded-lg text-xs font-bold transition-all"
               >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 Download .{previewTab === 'nodejs' ? 'js' : previewTab === 'bash' ? 'sh' : 'ps1'}
               </button>
               <button

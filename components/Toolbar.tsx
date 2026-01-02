@@ -41,19 +41,23 @@ const Toolbar: React.FC<ToolbarProps> = ({
         {/* Paint Tool */}
         <div className="flex flex-col gap-2">
           <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest px-1">Intensity</span>
-          <div className="flex items-center gap-1.5 p-1 bg-gray-50 dark:bg-[#161b22] rounded-lg border border-gray-200 dark:border-[#30363d]">
-            {levels.map((lvl) => (
-              <button
-                key={lvl}
-                onClick={() => setCurrentLevel(lvl)}
-                className={`w-7 h-7 rounded-md ${LEVEL_COLORS[lvl]} border-2 transition-all ${
-                  currentLevel === lvl 
-                    ? 'border-blue-500 scale-110 shadow-sm' 
-                    : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600'
-                }`}
-                title={`Level ${lvl}`}
-              />
-            ))}
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-400 dark:text-gray-500 font-medium">Less</span>
+            <div className="flex items-center gap-1.5 p-1 bg-gray-50 dark:bg-[#161b22] rounded-lg border border-gray-200 dark:border-[#30363d]">
+              {levels.map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => setCurrentLevel(lvl)}
+                  className={`w-[10px] h-[10px] rounded-[2px] transition-all ${LEVEL_COLORS[lvl]} ${
+                    currentLevel === lvl 
+                      ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-[#0d1117] scale-110' 
+                      : 'hover:ring-1 hover:ring-gray-300 dark:hover:ring-gray-600'
+                  } ${lvl === 0 ? 'outline outline-1 outline-[#1b1f230f] dark:outline-[#ffffff0d]' : ''}`}
+                  title={`Level ${lvl}`}
+                />
+              ))}
+            </div>
+            <span className="text-[9px] text-gray-400 dark:text-gray-500 font-medium">More</span>
           </div>
         </div>
 
